@@ -2,5 +2,12 @@
   "name": "01",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "moment": "^2.23.0",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.4.1"
+  }
 }
