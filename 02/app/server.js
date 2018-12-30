@@ -7,7 +7,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const User = require('./models/user')
 
-mongoose.Promise = global.Promise
+// mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost:27017/jsonAPI', { useNewUrlParser: true, useCreateIndex: true })
 
 
@@ -49,6 +49,7 @@ router.route('/users')
         res.send(err)
       })
   })
+
 router.route('/users/:user_id')
   .get(async(req, res) => {
     await User.findById(req.params.user_id)
@@ -61,7 +62,6 @@ router.route('/users/:user_id')
       })
   })
   .put(async(req, res) => {
-    // let user = null
     const result =  await User.findById(req.params.user_id)
       .then(user => {
         user.twitter_id = req.body.twitter_id
@@ -92,8 +92,6 @@ router.route('/users/:user_id')
       .then(() => res.json({ message: "Successfully deleted"}))
       .catch(err => res.send(err))
   })
-
-
 
 app.listen(port)
 console.info('listen on port: ' + port)
